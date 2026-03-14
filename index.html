@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- ═══ PRIMARY SEO ═══ -->
-  <title>Top-Rated Contractor Marketing Systems & Design | RJM Designs & Consultations</title>
-  <meta name="description" content="RJM Designs & Consultations builds done-for-you marketing systems and lead generation strategies for local service contractors. Get more calls, more jobs, and more revenue — without guesswork." />
-  <meta name="keywords" content="contractor marketing, marketing systems for contractors, local contractor marketing, lead generation for contractors, home services marketing, contractor SEO, digital marketing for contractors, contractor branding, local SEO for contractors, marketing consultant for contractors, contractor advertising, HVAC marketing, plumbing marketing, roofing marketing, landscaping marketing, electrician marketing, graphic design for contractors" />
+  <title>Contractor Marketing Systems San Diego & Riverside County | RJM Designs & Consultations</title>
+  <meta name="description" content="RJM Designs & Consultations builds done-for-you marketing systems and lead generation strategies for local service contractors in San Diego and Riverside County, CA." />
+  <meta name="keywords" content="contractor marketing, marketing systems for contractors, local contractor marketing, lead generation for contractors, home services marketing, contractor SEO, digital marketing for contractors, contractor branding, local SEO for contractors, marketing consultant for contractors, contractor advertising, HVAC marketing, plumbing marketing, roofing marketing, landscaping marketing, electrician marketing, graphic design for contractors, contractor marketing San Diego, contractor marketing Riverside County, san diego contractor marketing, chula vista contractor marketing, escondido contractor marketing, el cajon contractor marketing, oceanside contractor marketing, riverside contractor marketing, moreno valley contractor marketing, corona contractor marketing, murrieta contractor marketing, temecula contractor marketing" />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="RJM Designs & Consultations" />
   <link rel="canonical" href="https://www.designsandconsults.com/" />
@@ -22,15 +22,15 @@
   <!-- ═══ OPEN GRAPH (Facebook / LinkedIn) ═══ -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.designsandconsults.com/" />
-  <meta property="og:title" content="Top-Rated Contractor Marketing Systems & Design | RJM Designs & Consultations" />
-  <meta property="og:description" content="Marketing systems and lead generation strategies built exclusively for local service contractors. Get more calls, more jobs, and more revenue." />
+  <meta property="og:title" content="Contractor Marketing Systems San Diego & Riverside County | RJM Designs & Consultations" />
+  <meta property="og:description" content="RJM Designs & Consultations builds done-for-you marketing systems and lead generation strategies for local service contractors in San Diego and Riverside County, CA." />
   <meta property="og:image" content="https://www.designsandconsults.com/og-image.jpg" />
   <meta property="og:site_name" content="RJM Designs & Consultations" />
 
   <!-- ═══ TWITTER CARD ═══ -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Top-Rated Contractor Marketing Systems | RJM Designs & Consultations" />
-  <meta name="twitter:description" content="Done-for-you marketing systems for local service contractors. More leads. More revenue. No guesswork." />
+  <meta name="twitter:title" content="Contractor Marketing Systems San Diego & Riverside County | RJM Designs & Consultations" />
+  <meta name="twitter:description" content="RJM Designs & Consultations builds done-for-you marketing systems and lead generation strategies for local service contractors in San Diego and Riverside County, CA." />
   <meta name="twitter:image" content="https://www.designsandconsults.com/og-image.jpg" />
 
   <!-- ═══ LOCAL BUSINESS SCHEMA (JSON-LD) ═══ -->
@@ -46,7 +46,9 @@
     "email": "rudy@designsandconsults.com",
     "address": {
       "@type": "PostalAddress",
-      "addressCountry": "US"
+      "addressCountry": "US",
+      "addressRegion": "CA",
+      "serviceArea": "San Diego County and Riverside County, California"
     },
     "areaServed": {
       "@type": "Country",
@@ -124,7 +126,7 @@
       {
         "@type": "Question",
         "name": "What marketing services does RJM offer for contractors?",
-        "acceptedAnswer": {"@type":"Answer","text":"RJM offers contractor marketing strategy, done-for-you marketing systems, local SEO, branding and graphic design, Google and Facebook advertising, and 1-on-1 growth consultations."}
+        "acceptedAnswer": {"@type":"Answer","text":"RJM offers contractor marketing strategy, done-for-you marketing systems, local SEO, branding and graphic design, Google advertising, and 1-on-1 growth consultations."}
       },
       {
         "@type": "Question",
@@ -845,9 +847,98 @@
     }
 
     /* ═══════════════════ MOBILE ═══════════════════ */
+    /* ═══════════════════ HAMBURGER MENU ═══════════════════ */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+      z-index: 600;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      transition: transform 0.3s, opacity 0.3s, background 0.2s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10,10,10,0.98);
+      backdrop-filter: blur(20px);
+      z-index: 490;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 6rem 2.5rem 3rem;
+      overflow-y: auto;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      text-decoration: none;
+      line-height: 1.2;
+      transition: color 0.2s;
+      display: block;
+      padding: 0.4rem 0;
+    }
+    .mobile-menu a:hover { color: var(--red); }
+    .mobile-menu .mobile-divider {
+      width: 40px; height: 2px;
+      background: var(--red);
+      margin: 1rem 0;
+    }
+    .mobile-menu .mobile-services-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+      margin-top: 0.5rem;
+      display: block;
+    }
+    .mobile-menu .mobile-sub {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      padding: 0.35rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .mobile-menu .mobile-sub:hover { color: var(--white); }
+    .mobile-cta-btn {
+      margin-top: 2rem;
+      background: var(--red);
+      color: var(--white) !important;
+      font-family: var(--font-body) !important;
+      font-size: 0.85rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.12em !important;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem !important;
+      display: inline-block !important;
+    }
+
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
+      .hamburger { display: flex; }
       section { padding: 4rem 1.5rem; }
       #home { padding: 0 1.5rem 4rem; }
       .about-inner, .contact-inner { grid-template-columns: 1fr; }
@@ -865,9 +956,26 @@
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
+  <!-- ═══ MOBILE MENU ═══ -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" onclick="closeMobile()">Home</a>
+    <div class="mobile-divider"></div>
+    <span class="mobile-services-label">Services</span>
+    <a href="marketing-strategy.html" class="mobile-sub">🎯 Marketing Strategy</a>
+    <a href="marketing-systems.html" class="mobile-sub">⚙️ Marketing Systems</a>
+    <a href="local-seo.html" class="mobile-sub">📍 Local SEO</a>
+    <a href="branding-design.html" class="mobile-sub">🖌️ Branding & Design</a>
+    <a href="advertising.html" class="mobile-sub">📣 Advertising & Lead Gen</a>
+    <a href="growth-consultation.html" class="mobile-sub">📊 Growth Consultation</a>
+    <div class="mobile-divider"></div>
+    <a href="#about" onclick="closeMobile()">About</a>
+    <a href="blog.html" onclick="closeMobile()">Blog</a>
+    <a href="#contact" class="mobile-cta-btn" onclick="closeMobile()">Work With Me</a>
+  </div>
+
   <!-- ═══ NAV ═══ -->
   <nav>
-    <a href="#home" class="nav-logo"><img src="/mnt/user-data/uploads/RJM.png" alt="RJM Designs & Consultations - Contractor Marketing Systems" /></a>
+    <a href="#home" class="nav-logo"><img src="RJM.png" alt="RJM Designs & Consultations - Contractor Marketing Systems" /></a>
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li class="nav-item nav-has-dropdown">
@@ -882,9 +990,12 @@
         </div>
       </li>
       <li><a href="#about">About</a></li>
-      <li><a href="#blog">Blog</a></li>
+      <li><a href="blog.html">Blog</a></li>
       <li><a href="#contact" class="nav-cta">Work With Me</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" onclick="toggleMobile()">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <!-- ═══ HERO ═══ -->
@@ -892,7 +1003,7 @@
     <div class="hero-bg"></div>
     <div class="hero-grid-lines"></div>
 
-    <p class="hero-tag">Practical Marketing Tools And Strategies</p>
+    <p class="hero-tag">Practical Marketing Tools And Strategies — San Diego &amp; Riverside County</p>
 
     <h1 class="hero-headline">
       GROW<br>YOUR<br><em>trade.</em>
@@ -901,7 +1012,7 @@
     <div class="hero-sub-row">
       <div>
         <p class="hero-subtext">
-          RJM Designs & Consultations builds <strong>done-for-you marketing systems</strong> that generate consistent leads for local service contractors — plumbers, roofers, HVAC techs, electricians, and more.
+          RJM Designs & Consultations builds <strong>done-for-you marketing systems</strong> for local service contractors in <strong>San Diego &amp; Riverside County</strong> — plumbers, roofers, HVAC techs, electricians, and more.
         </p>
         <div class="hero-cta-group" style="margin-top:2rem;">
           <a href="#contact" class="btn-primary" aria-label="Get a free contractor marketing consultation">Get a Free Consultation</a>
@@ -989,7 +1100,7 @@
         <span class="service-num">05</span>
         <div class="service-icon">📣</div>
         <h3 class="service-name">Contractor Advertising & Lead Generation</h3>
-        <p class="service-desc">Google Ads and Facebook Ads campaigns crafted specifically for home service contractors — built to convert local homeowners into paying customers fast.</p>
+        <p class="service-desc">Google Ads campaigns crafted specifically for home service contractors — built to convert local homeowners into paying customers fast.</p>
         <a href="advertising.html" class="service-link" aria-label="Learn about contractor advertising">Learn More →</a>
       </div>
       <div class="service-card">
@@ -1005,7 +1116,7 @@
   <!-- ═══ TRADES WE SERVE ═══ -->
   <section id="trades" style="background:var(--black);padding:4rem 3rem;">
     <p class="section-label" style="justify-content:center;margin-bottom:0.8rem;">Industries We Serve</p>
-    <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);text-align:center;letter-spacing:0.02em;color:var(--white);margin-bottom:3rem;">MARKETING FOR <em style="font-family:var(--font-serif);font-style:italic;font-weight:300;color:var(--red);">every trade.</em></h2>
+    <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);text-align:center;letter-spacing:0.02em;color:var(--white);margin-bottom:3rem;">SERVING <em style="font-family:var(--font-serif);font-style:italic;font-weight:300;color:var(--red);">San Diego &amp; Riverside County.</em></h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--border);max-width:1100px;margin:0 auto;">
       <div class="trade-tile" style="background:var(--navy);border:1px solid var(--red);"><span class="trade-icon">🏗️</span><span class="trade-name" style="color:#fff;font-size:0.9rem;">General Contracting</span><span style="font-size:0.65rem;color:rgba(255,255,255,0.65);letter-spacing:0.1em;text-transform:uppercase;font-weight:700;">Primary Market</span></div>
       <div class="trade-tile"><span class="trade-icon">🔧</span><span class="trade-name">Plumbing</span></div>
@@ -1051,7 +1162,7 @@
           RJM Designs & Consultations was built on a simple truth: <strong>skilled contractors deserve a marketing partner who actually gets the trades.</strong> Most agencies burn your budget with cookie-cutter strategies that generate zero ROI. We're different — we specialize exclusively in marketing systems for local service businesses.
         </p>
         <p class="about-text">
-          We work with <strong>plumbers, electricians, HVAC technicians, roofers, landscapers, painters, and general contractors</strong> across the country. We know your customers, your seasonality, and exactly how to position you as the obvious choice in your local market.
+          We work with <strong>plumbers, electricians, HVAC technicians, roofers, landscapers, painters, and general contractors</strong> throughout <strong>San Diego County</strong> and <strong>Riverside County</strong>, including San Diego, Chula Vista, Escondido, El Cajon, Oceanside, Santee, La Mesa, Vista and surrounding areas. We know your customers, your seasonality, and exactly how to position you as the obvious choice in your local market.
         </p>
         <div class="about-pillars">
           <div class="pillar">Systems built to run without you babysitting them</div>
@@ -1071,11 +1182,11 @@
         <p class="section-label">Contractor Marketing Resources</p>
         <h2 class="section-title">THE<br><em>playbook.</em></h2>
       </div>
-      <a href="#contact" class="btn-outline">Get Marketing Help →</a>
+      <a href="blog.html" class="btn-outline">View All Articles →</a>
     </div>
 
     <div class="blog-grid">
-      <div class="blog-card featured">
+      <a href="blog-5-step-marketing-system.html" class="blog-card featured" style="text-decoration:none;display:block;">
         <div class="blog-card-img">🏗️</div>
         <div class="blog-card-body">
           <span class="blog-cat">Lead Generation</span>
@@ -1083,32 +1194,32 @@
           <p class="blog-excerpt">Most contractors get their leads from word of mouth and hope. Here's how to build a predictable system that fills your pipeline every single month — regardless of season.</p>
           <div class="blog-meta"><span>March 10, 2025</span><span>·</span><span>8 min read</span></div>
         </div>
-      </div>
+      </a>
       <div class="blog-stack">
-        <div class="blog-card">
+        <a href="blog-own-page-1-google.html" class="blog-card" style="text-decoration:none;display:block;">
           <div class="blog-card-img">📍</div>
           <div class="blog-card-body">
             <span class="blog-cat">Local SEO</span>
             <div class="blog-title">How to Own Page 1 on Google in Your Service Area</div>
             <div class="blog-meta"><span>Feb 28, 2025</span></div>
           </div>
-        </div>
-        <div class="blog-card">
-          <div class="blog-card-img">🎨</div>
+        </a>
+        <a href="blog-truck-wrap-marketing.html" class="blog-card" style="text-decoration:none;display:block;">
+          <div class="blog-card-img">🚛</div>
           <div class="blog-card-body">
             <span class="blog-cat">Branding</span>
             <div class="blog-title">Why Your Truck Wrap Is Your Best Marketing Asset</div>
             <div class="blog-meta"><span>Feb 14, 2025</span></div>
           </div>
-        </div>
-        <div class="blog-card">
+        </a>
+        <a href="blog-referral-engine.html" class="blog-card" style="text-decoration:none;display:block;">
           <div class="blog-card-img">💬</div>
           <div class="blog-card-body">
             <span class="blog-cat">Strategy</span>
             <div class="blog-title">Stop Chasing Leads. Build a Referral Engine Instead</div>
             <div class="blog-meta"><span>Jan 30, 2025</span></div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -1125,11 +1236,11 @@
         <div class="contact-details">
           <div class="contact-detail">
             <div class="contact-detail-icon">📧</div>
-            <span><a href="mailto:rudy@designsandconsults.com" style="color:var(--white);text-decoration:none;">rudy@designsandconsults.com</a></span>
+            <span><a href="/cdn-cgi/l/email-protection#2b595e4f526b4f4e58424c45584a454f484445585e475f5805484446" style="color:var(--white);text-decoration:none;"><span class="__cf_email__" data-cfemail="562423322f163233253f31382537383235393825233a22257835393b">[email&#160;protected]</span></a></span>
           </div>
           <div class="contact-detail">
             <div class="contact-detail-icon">📍</div>
-            <span>Serving Local Contractors Nationwide</span>
+            <span>Serving San Diego & Riverside County, CA</span>
           </div>
         </div>
       </div>
@@ -1201,12 +1312,25 @@
         <li><a href="#about" style="font-size:0.8rem;color:var(--muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--muted)'">About</a></li>
         <li><a href="#blog" style="font-size:0.8rem;color:var(--muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--muted)'">Blog</a></li>
         <li><a href="#contact" style="font-size:0.8rem;color:var(--muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--muted)'">Contact</a></li>
-        <li><a href="mailto:rudy@designsandconsults.com" style="font-size:0.8rem;color:var(--muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--muted)'">rudy@designsandconsults.com</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#b5c7c0d1ccf5d1d0c6dcd2dbc6d4dbd1d6dadbc6c0d9c1c69bd6dad8" style="font-size:0.8rem;color:var(--muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--muted)'"><span class="__cf_email__" data-cfemail="f88a8d9c81b89c9d8b919f968b99969c9b97968b8d948c8bd69b9795">[email&#160;protected]</span></a></li>
       </ul>
     </div>
   </footer>
 
   <script>
+    function toggleMobile() {
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.getElementById('hamburger');
+      menu.classList.toggle('open');
+      btn.classList.toggle('open');
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    }
+    function closeMobile() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobile(); });
     // Custom cursor
     const cursor = document.getElementById('cursor');
     const ring = document.getElementById('cursorRing');
@@ -1247,17 +1371,4 @@
 
     document.querySelectorAll('.service-card, .blog-card, .about-inner, .contact-inner').forEach(el => {
       el.style.opacity = '0';
-      el.style.transform = 'translateY(24px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(el);
-    });
-
-    // Form submit
-    function handleSubmit(e) {
-      e.preventDefault();
-      document.getElementById('form-success').style.display = 'block';
-      e.target.querySelectorAll('input, select, textarea').forEach(el => el.value = '');
-    }
-
-    // Active nav link
-   
+      el.styl

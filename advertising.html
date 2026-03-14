@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contractor Advertising & Lead Generation | RJM Designs &amp; Consultations</title>
-  <meta name="description" content="Google Ads and Facebook Ads for local service contractors. Pay-per-click advertising campaigns designed to generate contractor leads fast."/>
+  <title>Contractor Advertising & Lead Generation | San Diego & Riverside County | RJM</title>
+  <meta name="keywords" content="contractor marketing San Diego, contractor marketing Riverside County, san diego contractor marketing, chula vista contractor marketing, escondido contractor marketing, el cajon contractor marketing, oceanside contractor marketing, riverside contractor marketing, moreno valley contractor marketing, corona contractor marketing, murrieta contractor marketing, temecula contractor marketing"/>
+  <meta name="description" content="Google Ads for contractors in San Diego County and Riverside County. Pay-per-click campaigns designed to generate contractor leads fast."/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://www.designsandconsults.com/advertising.html"/>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://www.designsandconsults.com/advertising.html"/>
-  <meta property="og:title" content="Contractor Advertising & Lead Generation | RJM Designs &amp; Consultations"/>
-  <meta property="og:description" content="Google Ads and Facebook Ads for local service contractors. Pay-per-click advertising campaigns designed to generate contractor leads fast."/>
+  <meta property="og:title" content="Contractor Advertising & Lead Generation | San Diego & Riverside County | RJM"/>
+  <meta property="og:description" content="Google Ads for contractors in San Diego County and Riverside County. Pay-per-click campaigns designed to generate contractor leads fast."/>
   <meta property="og:image" content="https://www.designsandconsults.com/og-image.jpg"/>
   <meta property="og:site_name" content="RJM Designs &amp; Consultations"/>
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Contractor Advertising & Lead Generation | RJM Designs &amp; Consultations"/>
-  <meta name="twitter:description" content="Google Ads and Facebook Ads for local service contractors. Pay-per-click advertising campaigns designed to generate contractor leads fast."/>
+  <meta name="twitter:title" content="Contractor Advertising & Lead Generation | San Diego & Riverside County | RJM"/>
+  <meta name="twitter:description" content="Google Ads for contractors in San Diego County and Riverside County. Pay-per-click campaigns designed to generate contractor leads fast."/>
   <meta name="twitter:image" content="https://www.designsandconsults.com/og-image.jpg"/>
 
   <!-- Favicon -->
@@ -39,7 +40,7 @@
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "Contractor Advertising and Lead Generation",
-    "description": "Google Ads and Facebook Ads for local service contractors. Pay-per-click advertising campaigns designed to generate contractor leads fast.",
+    "description": "Google Ads and Local Services Ads for local service contractors. Pay-per-click advertising campaigns designed to generate contractor leads fast.",
     "url": "https://www.designsandconsults.com/advertising.html",
     "provider": {
       "@type": "LocalBusiness",
@@ -47,11 +48,15 @@
       "url": "https://www.designsandconsults.com",
       "logo": "https://www.designsandconsults.com/RJM.png",
       "email": "rudy@designsandconsults.com",
-      "areaServed": {"@type": "Country", "name": "United States"}
+      "areaServed": [{"@type":"City","name":"San Diego"},{"@type":"City","name":"Riverside"},{"@type":"AdministrativeArea","name":"San Diego County, CA"},{"@type":"AdministrativeArea","name":"Riverside County, CA"}]
     },
-    "areaServed": {"@type": "Country", "name": "United States"},
+    "areaServed": [{"@type":"City","name":"San Diego"},{"@type":"City","name":"Riverside"},{"@type":"AdministrativeArea","name":"San Diego County, CA"},{"@type":"AdministrativeArea","name":"Riverside County, CA"}],
     "audience": {"@type": "Audience", "audienceType": "Local Service Contractors"}
   }
+  
+    function toggleMobile(){const m=document.getElementById('mobileMenu'),b=document.getElementById('hamburger');m.classList.toggle('open');b.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
+    function closeMobile(){document.getElementById('mobileMenu').classList.remove('open');document.getElementById('hamburger').classList.remove('open');document.body.style.overflow='';}
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMobile();});
   </script>
 
   <!-- JSON-LD: BreadcrumbList -->
@@ -167,9 +172,26 @@
     .footer-links{display:flex;gap:2rem;list-style:none;}
     .footer-links a{font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
     .footer-links a:hover{color:var(--red);}
+    
+    /* ═══ HAMBURGER MENU ═══ */
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;z-index:600;}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--white);transition:transform 0.3s,opacity 0.3s;}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,0.98);backdrop-filter:blur(20px);z-index:490;flex-direction:column;justify-content:center;align-items:flex-start;padding:6rem 2.5rem 3rem;overflow-y:auto;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{font-family:var(--font-display);font-size:2.8rem;letter-spacing:0.05em;color:var(--white);text-decoration:none;line-height:1.2;transition:color 0.2s;display:block;padding:0.4rem 0;}
+    .mobile-menu a:hover{color:var(--red);}
+    .mobile-divider{width:40px;height:2px;background:var(--red);margin:1rem 0;}
+    .mobile-services-label{font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem;margin-top:0.5rem;display:block;}
+    .mobile-menu .mobile-sub{font-family:var(--font-body);font-size:1rem;font-weight:600;letter-spacing:0.05em;color:var(--muted);padding:0.35rem 0;display:flex;align-items:center;gap:0.6rem;}
+    .mobile-menu .mobile-sub:hover{color:var(--white);}
+    .mobile-cta-btn{margin-top:2rem;background:var(--red);color:var(--white)!important;font-family:var(--font-body)!important;font-size:0.85rem!important;font-weight:700!important;letter-spacing:0.12em!important;text-transform:uppercase;padding:0.9rem 2rem!important;display:inline-block!important;}
     @media(max-width:768px){
       nav{padding:1rem 1.5rem;}
       .nav-links{display:none;}
+      .hamburger{display:flex;}
       .service-hero{padding:7rem 1.5rem 3rem;}
       .section-pad{padding:3.5rem 1.5rem;}
       .contact-inner{grid-template-columns:1fr;gap:3rem;}
@@ -210,7 +232,7 @@
     <p class="breadcrumb"><a href="index.html">Home</a><span>›</span> <a href="index.html#services">Services</a><span>›</span> ADS THAT actually work.</p>
     <p class="service-tag">Paid Advertising for Contractors</p>
     <h1 class="service-h1">ADS THAT<br><em>actually work.</em></h1>
-    <p class="service-hero-sub">Generic ad agencies waste contractor budgets on campaigns that look good in a report but don't fill your schedule. RJM builds <strong>Google and Facebook ad campaigns</strong> built from the ground up for home service contractors.</p>
+    <p class="service-hero-sub">Generic ad agencies waste contractor budgets on campaigns that look good in a report but don't fill your schedule. RJM builds <strong>Google Ads and Local Services Ad campaigns</strong> built from the ground up for home service contractors.</p>
   </div>
 
   <!-- OVERVIEW -->
@@ -221,11 +243,11 @@
         <h2 class="section-h2">What You <em>Get</em></h2>
         <p class="section-body">Contractor advertising requires specific knowledge — you need to target homeowners by zip code, run ads at the right times, and write copy that speaks to someone who needs work done now. That's exactly what we do.</p>
         <ul class="bullet-list">
-          <li>Google Search Ads targeting high-intent local keywords</li><li>Google Local Services Ads (LSA) setup and management</li><li>Facebook Ads targeting homeowners in your exact service area</li><li>Dedicated landing pages built to convert ad traffic into calls</li><li>Weekly performance reports with cost-per-lead tracking</li>
+          <li>Google Search Ads targeting high-intent local keywords</li><li>Google Local Services Ads (LSA) setup and management</li><li>Google Display retargeting ads for local homeowners</li><li>Dedicated landing pages built to convert ad traffic into calls</li><li>Weekly performance reports with cost-per-lead tracking</li>
         </ul>
       </div>
       <div class="del-grid" style="margin-top:0;">
-        <div class="del-card"><div class="del-icon">🔍</div><div class="del-title">Google Search Ads</div><div class="del-desc">Campaigns targeting homeowners actively searching for your trade right now in your service area.</div></div><div class="del-card"><div class="del-icon">📘</div><div class="del-title">Facebook Ads</div><div class="del-desc">Awareness and retargeting campaigns that keep your business visible to local homeowners.</div></div><div class="del-card"><div class="del-icon">🖥️</div><div class="del-title">Landing Pages</div><div class="del-desc">Dedicated conversion pages built for your ads — not your homepage, which kills conversions.</div></div><div class="del-card"><div class="del-icon">📈</div><div class="del-title">Weekly Reporting</div><div class="del-desc">Transparent reporting on spend, clicks, leads, and cost-per-lead every single week.</div></div>
+        <div class="del-card"><div class="del-icon">🔍</div><div class="del-title">Google Search Ads</div><div class="del-desc">Campaigns targeting homeowners actively searching for your trade right now in your service area.</div></div><div class="del-card"><div class="del-icon">📌</div><div class="del-title">Google Local Services Ads</div><div class="del-desc">Google-verified LSA listings that appear above all other results and only charge you per lead — not per click.</div></div><div class="del-card"><div class="del-icon">🖥️</div><div class="del-title">Landing Pages</div><div class="del-desc">Dedicated conversion pages built for your ads — not your homepage, which kills conversions.</div></div><div class="del-card"><div class="del-icon">📈</div><div class="del-title">Weekly Reporting</div><div class="del-desc">Transparent reporting on spend, clicks, leads, and cost-per-lead every single week.</div></div>
       </div>
     </div>
   </section>
@@ -279,6 +301,27 @@
     </div>
   </section>
 
+  <!-- GEO TARGETING SECTION -->
+  <section style="background:var(--black);padding:3.5rem 3rem;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem;"><span style="width:30px;height:1px;background:var(--red);display:inline-block;"></span>Areas We Serve</p>
+      <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);color:var(--white);margin-bottom:2rem;letter-spacing:0.02em;">SERVING <em style="font-family:var(--font-serif);font-style:italic;font-weight:300;color:var(--red);">San Diego &amp; Riverside County</em></h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;">
+        <div>
+          <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--navy-light);margin-bottom:1rem;border-bottom:1px solid var(--border);padding-bottom:0.5rem;">San Diego County</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;"><span style="font-size:0.88rem;color:var(--muted);padding:0.3rem 0;">San Diego</span><span style="font-size:0.88rem;color:var(--muted);padding:0.3rem 0;">Chula Vista</span><span style="font-size:0.88rem;color:var(--muted);padding:0.3rem 0;">Escondido</span><span style="font-size:0.88rem;color:var(--muted);padding:0.3rem 0;">El Cajon</span><span style="font-size:0.88rem;color:var(--muted);padding:0.3rem 0;">Oceanside</span><span style="font-size:0.88rem;color:var(--muted);padding:0.3rem 0;">Santee</span><span style="font-size:0.88rem;color:var(--muted);padding:0.3rem 0;">La Mesa</span><span style="font-size:0.88rem;color:var(--muted);padding:0.3rem 0;">Vista</span><span style="font-size:0.88rem;color:var(--muted);padding:0.3rem 0;">National City</span><span style="font-size:0.88rem;color:var(--muted);padding:0.3rem 0;">Poway</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--navy-light);margin-bottom:1rem;border-bottom:1px solid var(--border);padding-bottom:0.5rem;">Riverside County</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;"><span style="font-size:0.88rem;color:var(--muted);padding:0.3rem 0;">Riverside</span><span style="font-size:0.88rem;color:var(--muted);padding:0.3rem 0;">Moreno Valley</span><span style="font-size:0.88rem;color:var(--muted);padding:0.3rem 0;">Corona</span><span style="font-size:0.88rem;color:var(--muted);padding:0.3rem 0;">Murrieta</span><span style="font-size:0.88rem;color:var(--muted);padding:0.3rem 0;">Temecula</span><span style="font-size:0.88rem;color:var(--muted);padding:0.3rem 0;">Hemet</span><span style="font-size:0.88rem;color:var(--muted);padding:0.3rem 0;">Menifee</span><span style="font-size:0.88rem;color:var(--muted);padding:0.3rem 0;">Perris</span><span style="font-size:0.88rem;color:var(--muted);padding:0.3rem 0;">Lake Elsinore</span><span style="font-size:0.88rem;color:var(--muted);padding:0.3rem 0;">Jurupa Valley</span>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:0.88rem;color:var(--muted);margin-top:1.5rem;line-height:1.7;">Not seeing your city? <a href="#contact-form" style="color:var(--red);text-decoration:none;font-weight:600;">Reach out anyway</a> — we may still be able to help.</p>
+    </div>
+  </section>
+
   <!-- CONTACT FORM -->
   <section class="contact-section" id="contact-form">
     <div class="contact-inner">
@@ -293,7 +336,7 @@
           </div>
           <div style="display:flex;align-items:center;gap:1rem;font-size:0.9rem;color:var(--white);">
             <div style="width:38px;height:38px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--red);">📍</div>
-            Serving Local Contractors Nationwide
+            Serving San Diego & Riverside County, CA
           </div>
         </div>
       </div>
