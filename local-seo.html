@@ -200,19 +200,8 @@
       footer{flex-direction:column;align-items:flex-start;padding:2rem 1.5rem;}
     }
   
-    .google-form-wrap {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      padding: 0;
-      overflow: hidden;
-    }
-    .google-form-wrap iframe {
-      display: block;
-      width: 100%;
-      min-height: 900px;
-      border: none;
-      background: #fff;
-    }
+    
+    
   
     .form-cta-block {
       background: var(--card-bg);
@@ -279,77 +268,16 @@
     .form-cta-email a:hover { text-decoration: underline; }
   
     /* ═══ FORM MODAL ═══ */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(8px);
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s, visibility 0.3s;
-    }
-    .modal-overlay.open {
-      opacity: 1;
-      visibility: visible;
-    }
-    .modal-box {
-      background: var(--off-black);
-      border: 1px solid var(--border);
-      border-top: 3px solid var(--red);
-      width: 100%;
-      max-width: 680px;
-      max-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      transform: translateY(20px);
-      transition: transform 0.3s;
-      overflow: hidden;
-    }
-    .modal-overlay.open .modal-box {
-      transform: translateY(0);
-    }
-    .modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.2rem 1.5rem;
-      border-bottom: 1px solid var(--border);
-      flex-shrink: 0;
-    }
-    .modal-title {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      letter-spacing: 0.05em;
-      color: var(--white);
-    }
-    .modal-close {
-      background: none;
-      border: none;
-      color: var(--muted);
-      font-size: 1.5rem;
-      cursor: pointer;
-      padding: 0.2rem 0.5rem;
-      line-height: 1;
-      transition: color 0.2s;
-    }
+    
+    
+    
+    .modal-overlay.open 
+    
+    
+    
     .modal-close:hover { color: var(--red); }
-    .modal-body {
-      flex: 1;
-      overflow-y: auto;
-      background: #fff;
-    }
-    .modal-body iframe {
-      display: block;
-      width: 100%;
-      height: 600px;
-      border: none;
-    }
+    
+    
     .form-cta-block {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -402,24 +330,90 @@
     .form-cta-email a { color: var(--red); text-decoration: none; font-weight: 600; }
     .form-cta-email a:hover { text-decoration: underline; }
     @media(max-width:768px) {
-      .modal-body iframe { height: 500px; }
-      .modal-box { max-height: 95vh; }
+      
+      
+    }
+  
+    /* ═══ CONTACT MODAL — clean rebuild ═══ */
+    #contactModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 99999;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    #contactModal.open {
+      display: flex;
+    }
+    #contactModal .mbox {
+      background: #141414;
+      border: 1px solid #333;
+      border-top: 3px solid #E8192C;
+      width: 100%;
+      max-width: 660px;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    #contactModal .mhead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.4rem;
+      border-bottom: 1px solid #252525;
+      flex-shrink: 0;
+    }
+    #contactModal .mtitle {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.05em;
+      color: #f5f0eb;
+    }
+    #contactModal .mclose {
+      background: none;
+      border: none;
+      color: #888;
+      font-size: 1.8rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0 4px;
+    }
+    #contactModal .mclose:hover { color: #E8192C; }
+    #contactModal .mbody {
+      flex: 1;
+      overflow-y: auto;
+      background: #fff;
+    }
+    #contactModal .mbody iframe {
+      display: block;
+      width: 100%;
+      height: 620px;
+      border: none;
+    }
+    @media(max-width:600px) {
+      #contactModal .mbody iframe { height: 500px; }
     }
   </style>
 </head>
 <body>
-  <!-- CONTACT FORM MODAL -->
-  <div class="modal-overlay" id="contactModal" onclick="if(event.target===this)closeModal()">
-    <div class="modal-box">
-      <div class="modal-header">
-        <span class="modal-title">GET A FREE CONSULTATION</span>
-        <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+  <!-- MODAL -->
+  <div id="contactModal">
+    <div class="mbox">
+      <div class="mhead">
+        <span class="mtitle">GET A FREE CONSULTATION</span>
+        <button class="mclose" onclick="closeModal()">&#x2715;</button>
       </div>
-      <div class="modal-body">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScRB6b1wjeFOvQXk4qc-sVm977SSCJyb3I2jEQHIDJjf9sjPw/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      <div class="mbody">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScRB6b1wjeFOvQXk4qc-sVm977SSCJyb3I2jEQHIDJjf9sjPw/viewform?embedded=true" frameborder="0">Loading…</iframe>
       </div>
     </div>
   </div>
+
+  
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="cursorRing"></div>
   <nav>
@@ -605,15 +599,22 @@
   </footer>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
-    // ── Contact form modal ──────────────────────────────────────
+    
+  
+    // Modal
     function openModal() {
-      document.getElementById('contactModal').classList.add('open');
+      var m = document.getElementById('contactModal');
+      m.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
     function closeModal() {
-      document.getElementById('contactModal').classList.remove('open');
+      var m = document.getElementById('contactModal');
+      m.classList.remove('open');
       document.body.style.overflow = '';
     }
+    document.getElementById('contactModal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeModal();
     });
