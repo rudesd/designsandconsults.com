@@ -1477,7 +1477,7 @@
         </button>
         <p class="form-cta-note">Takes about 2 minutes · We respond within 24 hours</p>
         <div class="form-cta-email">
-          Or email directly: <a href="mailto:rudy@designsandconsults.com">rudy@designsandconsults.com</a>
+          Or email directly: <a href="/cdn-cgi/l/email-protection#8bf9feeff2cbefeef8e2ece5f8eae5efe8e4e5f8fee7fff8a5e8e4e6"><span class="__cf_email__" data-cfemail="e39196879aa38786908a848d90828d87808c8d90968f9790cd808c8e">[email&#160;protected]</span></a>
         </div>
       </div>
         <h3 class="form-cta-title">Ready to Get Started?</h3>
@@ -1487,7 +1487,7 @@
         </a>
         <p class="form-cta-note">Opens in a new tab · Takes about 2 minutes</p>
         <div class="form-cta-email">
-          Or email directly: <a href="mailto:rudy@designsandconsults.com">rudy@designsandconsults.com</a>
+          Or email directly: <a href="/cdn-cgi/l/email-protection#5e2c2b3a271e3a3b2d3739302d3f303a3d31302d2b322a2d703d3133"><span class="__cf_email__" data-cfemail="e99b9c8d90a98d8c9a808e879a88878d8a86879a9c859d9ac78a8684">[email&#160;protected]</span></a>
         </div>
       </div>
     </div>
@@ -1523,7 +1523,7 @@
     </div>
   </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
     
   
     // Modal
@@ -1543,11 +1543,13 @@
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeModal();
     });
-  </script><script>
+  </script>
+
+  <script>
     // Mobile menu
     function toggleMobile() {
-      const menu = document.getElementById('mobileMenu');
-      const btn = document.getElementById('hamburger');
+      var menu = document.getElementById('mobileMenu');
+      var btn = document.getElementById('hamburger');
       menu.classList.toggle('open');
       btn.classList.toggle('open');
       document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
@@ -1557,49 +1559,38 @@
       document.getElementById('hamburger').classList.remove('open');
       document.body.style.overflow = '';
     }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobile(); });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') { closeMobile(); closeModal(); }
+    });
 
-    // Custom cursor
-    const cursor = document.getElementById('cursor');
-    const ring = document.getElementById('cursorRing');
-    if (cursor && ring) {
-      document.addEventListener('mousemove', e => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-        setTimeout(() => {
-          ring.style.left = e.clientX + 'px';
-          ring.style.top = e.clientY + 'px';
-        }, 60);
-      });
-      document.querySelectorAll('a, button').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-          cursor.style.width = '20px'; cursor.style.height = '20px';
-          ring.style.width = '54px'; ring.style.height = '54px';
-          ring.style.borderColor = 'rgba(232,25,44,0.9)';
-        });
-        el.addEventListener('mouseleave', () => {
-          cursor.style.width = '12px'; cursor.style.height = '12px';
-          ring.style.width = '36px'; ring.style.height = '36px';
-          ring.style.borderColor = 'rgba(232,25,44,0.5)';
-        });
-      });
+    // Contact form modal
+    function openModal() {
+      document.getElementById('contactModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
     }
+    function closeModal() {
+      document.getElementById('contactModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('contactModal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
 
     // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
         if (entry.isIntersecting) {
           entry.target.style.opacity = '1';
           entry.target.style.transform = 'translateY(0)';
         }
       });
     }, { threshold: 0.1 });
-    document.querySelectorAll('.service-card, .blog-card, .about-inner, .contact-inner').forEach(el => {
+    document.querySelectorAll('.service-card, .blog-card, .about-inner, .contact-inner, .reveal').forEach(function(el) {
       el.style.opacity = '0';
       el.style.transform = 'translateY(24px)';
       el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(el);
+      obs.observe(el);
     });
-
-    // Active nav highlight on scroll
-    const sections = document.querySelectorAll('section[id]')
+  </script>
+</body>
+</html>

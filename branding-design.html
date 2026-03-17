@@ -571,7 +571,7 @@
         </button>
         <p class="form-cta-note">Takes about 2 minutes · We respond within 24 hours</p>
         <div class="form-cta-email">
-          Or email directly: <a href="mailto:rudy@designsandconsults.com">rudy@designsandconsults.com</a>
+          Or email directly: <a href="/cdn-cgi/l/email-protection#770502130e371312041e10190416191314181904021b03045914181a"><span class="__cf_email__" data-cfemail="a5d7d0c1dce5c1c0d6ccc2cbd6c4cbc1c6cacbd6d0c9d1d68bc6cac8">[email&#160;protected]</span></a>
         </div>
       </div>
         <h3 class="form-cta-title">Ready to Get Started?</h3>
@@ -581,7 +581,7 @@
         </a>
         <p class="form-cta-note">Opens in a new tab · Takes about 2 minutes</p>
         <div class="form-cta-email">
-          Or email directly: <a href="mailto:rudy@designsandconsults.com">rudy@designsandconsults.com</a>
+          Or email directly: <a href="/cdn-cgi/l/email-protection#d3a1a6b7aa93b7b6a0bab4bda0b2bdb7b0bcbda0a6bfa7a0fdb0bcbe"><span class="__cf_email__" data-cfemail="730106170a331716001a141d00121d17101c1d00061f07005d101c1e">[email&#160;protected]</span></a>
         </div>
       </div>
     </div>
@@ -598,7 +598,7 @@
     </ul>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
     
   
     // Modal
@@ -618,7 +618,54 @@
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeModal();
     });
-  </script><script>
-    const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
-    document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';setTimeout(()=>{ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';},60);});
-    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.style.width='20px';cursor.style.height='20px';ring.st
+  </script>
+
+  <script>
+    // Mobile menu
+    function toggleMobile() {
+      var menu = document.getElementById('mobileMenu');
+      var btn = document.getElementById('hamburger');
+      menu.classList.toggle('open');
+      btn.classList.toggle('open');
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    }
+    function closeMobile() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') { closeMobile(); closeModal(); }
+    });
+
+    // Contact form modal
+    function openModal() {
+      document.getElementById('contactModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('contactModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('contactModal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    // Scroll reveal
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.service-card, .blog-card, .about-inner, .contact-inner, .reveal').forEach(function(el) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      obs.observe(el);
+    });
+  </script>
+</body>
+</html>
