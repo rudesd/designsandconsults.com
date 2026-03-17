@@ -57,6 +57,19 @@
     function toggleMobile(){const m=document.getElementById('mobileMenu'),b=document.getElementById('hamburger');m.classList.toggle('open');b.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
     function closeMobile(){document.getElementById('mobileMenu').classList.remove('open');document.getElementById('hamburger').classList.remove('open');document.body.style.overflow='';}
     document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMobile();});
+  
+    // Contact form modal
+    function openModal() {
+      document.getElementById('contactModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('contactModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
   </script>
 
   <!-- JSON-LD: BreadcrumbList -->
@@ -87,9 +100,9 @@
     .cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(232,25,44,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform 0.15s ease,width 0.3s,height 0.3s,border-color 0.3s;}
     body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:0.04;pointer-events:none;z-index:1000;}
     /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(12,12,12,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0.8rem 3rem;background:rgba(12,12,12,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
     .nav-logo{text-decoration:none;display:flex;align-items:center;}
-    .nav-logo img{height:44px;width:auto;display:block;}
+    .nav-logo img{height:130px;width:auto;display:block;}
     .nav-links{display:flex;gap:2.5rem;list-style:none;}
     .nav-links a{color:var(--muted);text-decoration:none;font-size:0.8rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.2s;position:relative;}
     .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--red);transition:width 0.3s;}
@@ -199,9 +212,227 @@
       .cta-band{padding:3rem 1.5rem;}
       footer{flex-direction:column;align-items:flex-start;padding:2rem 1.5rem;}
     }
+  
+    .google-form-wrap {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 0;
+      overflow: hidden;
+    }
+    .google-form-wrap iframe {
+      display: block;
+      width: 100%;
+      min-height: 900px;
+      border: none;
+      background: #fff;
+    }
+  
+    .form-cta-block {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--red);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .form-cta-icon {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    .form-cta-title {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+    .form-cta-sub {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 420px;
+    }
+    .form-cta-btn {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      margin-top: 0.5rem;
+    }
+    .form-cta-btn:hover {
+      background: var(--navy);
+      transform: translateY(-2px);
+    }
+    .form-cta-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+    .form-cta-email {
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+      width: 100%;
+    }
+    .form-cta-email a {
+      color: var(--red);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .form-cta-email a:hover { text-decoration: underline; }
+  
+    /* ═══ FORM MODAL ═══ */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-box {
+      background: var(--off-black);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--red);
+      width: 100%;
+      max-width: 680px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.3s;
+      overflow: hidden;
+    }
+    .modal-overlay.open .modal-box {
+      transform: translateY(0);
+    }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.2rem 0.5rem;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--red); }
+    .modal-body {
+      flex: 1;
+      overflow-y: auto;
+      background: #fff;
+    }
+    .modal-body iframe {
+      display: block;
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+    .form-cta-block {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--red);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .form-cta-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+    .form-cta-title {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+    .form-cta-sub {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 420px;
+    }
+    .form-cta-btn {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      margin-top: 0.5rem;
+    }
+    .form-cta-btn:hover { background: var(--navy); transform: translateY(-2px); }
+    .form-cta-note { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
+    .form-cta-email {
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+      width: 100%;
+    }
+    .form-cta-email a { color: var(--red); text-decoration: none; font-weight: 600; }
+    .form-cta-email a:hover { text-decoration: underline; }
+    @media(max-width:768px) {
+      .modal-body iframe { height: 500px; }
+      .modal-box { max-height: 95vh; }
+    }
   </style>
 </head>
 <body>
+  <!-- CONTACT FORM MODAL -->
+  <div class="modal-overlay" id="contactModal" onclick="if(event.target===this)closeModal()">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span class="modal-title">GET A FREE CONSULTATION</span>
+        <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScRB6b1wjeFOvQXk4qc-sVm977SSCJyb3I2jEQHIDJjf9sjPw/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      </div>
+    </div>
+  </div>
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="cursorRing"></div>
   <nav>
@@ -267,7 +498,7 @@
   <div class="cta-band">
     <h2 class="cta-band-title">Ready to <em>get started?</em></h2>
     <p class="cta-band-sub">Fill out the form below and Rudy will personally reach out within 24 hours.</p>
-    <a href="#contact-form" class="btn-primary">Get a Free Consultation</a>
+    <button style="cursor:pointer;" href="#contact-form" class="btn-primary">Get a Free Consultation</button>
   </div>
 
   <!-- RELATED SERVICES - internal links -->
@@ -329,42 +560,54 @@
         <p class="section-label">Let's Talk</p>
         <h2 class="section-h2" style="font-size:clamp(2rem,4vw,3rem);">Send a <em>message</em></h2>
         <p class="section-body">No sales pitch — just a real conversation about your business and what you're trying to accomplish.</p>
-        <div style="margin-top:2rem;display:flex;flex-direction:column;gap:1rem;">
+        <div style="display:flex;align-items:center;gap:1.2rem;margin-top:2rem;margin-bottom:1.5rem;">
+          <div style="width:70px;height:70px;border-radius:50%;overflow:hidden;border:2px solid var(--red);flex-shrink:0;">
+            <img src="about-us-photo.jpg" alt="Rudy - RJM Designs and Consultations" style="width:100%;height:100%;object-fit:cover;object-position:center top;"/>
+          </div>
+          <div>
+            <div style="font-family:var(--font-display);font-size:1.3rem;letter-spacing:0.05em;color:var(--white);">Rudy</div>
+            <div style="font-size:0.78rem;color:var(--muted);letter-spacing:0.05em;">Founder, RJM Designs &amp; Consultations</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:1rem;">
           <div style="display:flex;align-items:center;gap:1rem;font-size:0.9rem;color:var(--white);">
             <div style="width:38px;height:38px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--red);">📧</div>
-            <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="730106170a331716001a141d00121d17101c1d00061f07005d101c1e">[email&#160;protected]</a>
+            <a href="/cdn-cgi/l/email-protection#ea989f8e93aa8e8f99838d84998b848e898584999f869e99c4898587" style="color:var(--white);text-decoration:none;"><span class="__cf_email__" data-cfemail="87f5f2e3fec7e3e2f4eee0e9f4e6e9e3e4e8e9f4f2ebf3f4a9e4e8ea">[email&#160;protected]</span></a>
           </div>
           <div style="display:flex;align-items:center;gap:1rem;font-size:0.9rem;color:var(--white);">
             <div style="width:38px;height:38px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--red);">📍</div>
-            Serving San Diego & Riverside County, CA
+            Serving San Diego &amp; Riverside County, CA
           </div>
         </div>
       </div>
-      <form class="contact-form" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="John" required/></div>
-          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Smith" required/></div>
+      </div>
+      <div class="form-cta-block">
+        <div class="form-cta-icon">📋</div>
+        <h3 class="form-cta-title">Ready to Get Started?</h3>
+        <p class="form-cta-sub">Fill out our short contact form and Rudy will personally get back to you within 24 hours — no sales pitch, just a real conversation about your business.</p>
+        <button class="form-cta-btn" onclick="openModal()">
+          Get a Free Consultation →
+        </button>
+        <p class="form-cta-note">Takes about 2 minutes · We respond within 24 hours</p>
+        <div class="form-cta-email">
+          Or email directly: <a href="mailto:rudy@designsandconsults.com">rudy@designsandconsults.com</a>
         </div>
-        <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" placeholder="john@yourbusiness.com" required/></div>
-        <div class="form-group"><label class="form-label">Your Trade / Business</label>
-          <select class="form-select">
-            <option value="">Select your trade...</option>
-            <option>General Contracting</option><option>Plumbing</option><option>Electrical</option>
-            <option>HVAC</option><option>Roofing</option><option>Landscaping</option>
-            <option>Painting</option><option>Flooring</option><option>Other</option>
-          </select>
+      </div>
+        <h3 class="form-cta-title">Ready to Get Started?</h3>
+        <p class="form-cta-sub">Fill out our short contact form and Rudy will personally get back to you within 24 hours — no sales pitch, just a real conversation about your business.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScRB6b1wjeFOvQXk4qc-sVm977SSCJyb3I2jEQHIDJjf9sjPw/viewform" target="_blank" rel="noopener noreferrer" class="form-cta-btn">
+          Open Contact Form →
+        </a>
+        <p class="form-cta-note">Opens in a new tab · Takes about 2 minutes</p>
+        <div class="form-cta-email">
+          Or email directly: <a href="mailto:rudy@designsandconsults.com">rudy@designsandconsults.com</a>
         </div>
-        <div class="form-group"><label class="form-label">What's Your Biggest Challenge?</label>
-          <textarea class="form-textarea" placeholder="Tell me about your current marketing situation..."></textarea>
-        </div>
-        <button type="submit" class="btn-primary" style="width:100%;text-align:center;border:none;">Get My Free Strategy Session →</button>
-        <p id="form-success" style="display:none;color:#4ade80;font-size:0.85rem;font-weight:600;">✓ Message sent! Rudy will be in touch within 24 hours.</p>
-      </form>
+      </div>
     </div>
   </section>
 
   <footer>
-    <div><img src="RJM.png" alt="RJM Designs &amp; Consultations" style="height:38px;width:auto;"/></div>
+    <div><img src="RJM.png" alt="RJM Designs &amp; Consultations" style="height:60px;width:auto;"/></div>
     <div><p class="footer-copy">© 2025 RJM Designs &amp; Consultations. All rights reserved.</p><p class="footer-copy" style="margin-top:0.3rem;font-size:0.7rem;">Contractor Marketing Systems · Lead Generation · Local SEO · Branding</p></div>
     <ul class="footer-links">
       <li><a href="index.html">Home</a></li>
@@ -377,4 +620,4 @@
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
     document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';setTimeout(()=>{ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';},60);});
-    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.style.width='20px';cursor.style.height='20px';ring.style.width='54px';ring.style.height='54px';ring.style.borderColor='rgba(232,25,44,0.9)';});el.addEventListener('mouseleave',()=>{cursor.style.width='12px';cursor.style.height='12px';ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(
+    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.style.width='20px';cursor.style.height='20px';ring.st

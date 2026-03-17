@@ -77,6 +77,19 @@
       "https://www.linkedin.com/company/designsandconsults"
     ]
   }
+  
+    // Contact form modal
+    function openModal() {
+      document.getElementById('contactModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('contactModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
   </script>
 
   <!-- ═══ WEBSITE SCHEMA ═══ -->
@@ -213,7 +226,7 @@
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 500;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 3rem;
+      padding: 0.8rem 3rem;
       background: rgba(12,12,12,0.85);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
@@ -224,9 +237,10 @@
       align-items: center;
     }
     .nav-logo img {
-      height: 44px;
+      height: 130px;
       width: auto;
       display: block;
+      filter: brightness(1.05);
     }
     .nav-links {
       display: flex; gap: 2.5rem; list-style: none;
@@ -948,9 +962,228 @@
       .hero-stats { gap: 1.5rem; }
       footer { flex-direction: column; align-items: flex-start; }
     }
+  
+    .google-form-wrap {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 0;
+      overflow: hidden;
+    }
+    .google-form-wrap iframe {
+      display: block;
+      width: 100%;
+      min-height: 900px;
+      border: none;
+      background: #fff;
+    }
+  
+    .form-cta-block {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--red);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .form-cta-icon {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    .form-cta-title {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+    .form-cta-sub {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 420px;
+    }
+    .form-cta-btn {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      margin-top: 0.5rem;
+    }
+    .form-cta-btn:hover {
+      background: var(--navy);
+      transform: translateY(-2px);
+    }
+    .form-cta-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+    .form-cta-email {
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+      width: 100%;
+    }
+    .form-cta-email a {
+      color: var(--red);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .form-cta-email a:hover { text-decoration: underline; }
+  
+    /* ═══ FORM MODAL ═══ */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-box {
+      background: var(--off-black);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--red);
+      width: 100%;
+      max-width: 680px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.3s;
+      overflow: hidden;
+    }
+    .modal-overlay.open .modal-box {
+      transform: translateY(0);
+    }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.2rem 0.5rem;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--red); }
+    .modal-body {
+      flex: 1;
+      overflow-y: auto;
+      background: #fff;
+    }
+    .modal-body iframe {
+      display: block;
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+    .form-cta-block {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--red);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .form-cta-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+    .form-cta-title {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+    .form-cta-sub {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 420px;
+    }
+    .form-cta-btn {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      margin-top: 0.5rem;
+    }
+    .form-cta-btn:hover { background: var(--navy); transform: translateY(-2px); }
+    .form-cta-note { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
+    .form-cta-email {
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+      width: 100%;
+    }
+    .form-cta-email a { color: var(--red); text-decoration: none; font-weight: 600; }
+    .form-cta-email a:hover { text-decoration: underline; }
+    @media(max-width:768px) {
+      .modal-body iframe { height: 500px; }
+      .modal-box { max-height: 95vh; }
+    }
   </style>
 </head>
 <body>
+
+<!-- ═══ CONTACT FORM MODAL ═══ -->
+  <div class="modal-overlay" id="contactModal" onclick="if(event.target===this)closeModal()">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span class="modal-title">GET A FREE CONSULTATION</span>
+        <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScRB6b1wjeFOvQXk4qc-sVm977SSCJyb3I2jEQHIDJjf9sjPw/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      </div>
+    </div>
+  </div>
 
   <!-- Custom cursor -->
   <div class="cursor" id="cursor"></div>
@@ -1015,7 +1248,7 @@
           RJM Designs & Consultations builds <strong>done-for-you marketing systems</strong> for local service contractors in <strong>San Diego &amp; Riverside County</strong> — plumbers, roofers, HVAC techs, electricians, and more.
         </p>
         <div class="hero-cta-group" style="margin-top:2rem;">
-          <a href="#contact" class="btn-primary" aria-label="Get a free contractor marketing consultation">Get a Free Consultation</a>
+          <button style="cursor:pointer;" href="javascript:void(0)" onclick="openModal()" class="btn-primary" aria-label="Get a free contractor marketing consultation">Get a Free Consultation</button>
           <a href="#contact" class="btn-outline" aria-label="Send RJM a message">Send Me a Message</a>
         </div>
       </div>
@@ -1148,9 +1381,8 @@
   <section id="about">
     <div class="about-inner">
       <div class="about-visual">
-        <div class="about-photo-placeholder">
-          <div class="photo-icon">📷</div>
-          <span>Your photo here</span>
+        <div class="about-photo-placeholder" style="padding:0;overflow:hidden;background:none;border:none;">
+          <img src="about-us-photo.jpg" alt="Rudy — RJM Designs & Consultations" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" onerror="this.parentElement.innerHTML='<div class=\'photo-icon\'>📷</div><span>Photo loading...</span>'"/>
         </div>
         <div class="about-accent-box"></div>
         <div class="about-corner"></div>
@@ -1170,7 +1402,7 @@
           <div class="pillar">Strategies rooted in real contractor markets</div>
           <div class="pillar">Transparent reporting with actual ROI focus</div>
         </div>
-        <a href="#contact" class="btn-primary">Start a Conversation</a>
+        <button style="cursor:pointer;" href="javascript:void(0)" onclick="openModal()" class="btn-primary">Start a Conversation</button>
       </div>
     </div>
   </section>
@@ -1187,7 +1419,7 @@
 
     <div class="blog-grid">
       <a href="blog-5-step-marketing-system.html" class="blog-card featured" style="text-decoration:none;display:block;">
-        <div class="blog-card-img">🏗️</div>
+        <div class="blog-card-img" style="background:linear-gradient(135deg,#0d1f3c,#1B4FA8);font-size:3rem;">🏗️</div>
         <div class="blog-card-body">
           <span class="blog-cat">Lead Generation</span>
           <div class="blog-title">The 5-Step Marketing System Every Local Contractor Needs in 2025</div>
@@ -1197,7 +1429,7 @@
       </a>
       <div class="blog-stack">
         <a href="blog-own-page-1-google.html" class="blog-card" style="text-decoration:none;display:block;">
-          <div class="blog-card-img">📍</div>
+          <div class="blog-card-img" style="background:linear-gradient(135deg,#0d2010,#1a3a10);font-size:2.5rem;">📍</div>
           <div class="blog-card-body">
             <span class="blog-cat">Local SEO</span>
             <div class="blog-title">How to Own Page 1 on Google in Your Service Area</div>
@@ -1205,7 +1437,7 @@
           </div>
         </a>
         <a href="blog-truck-wrap-marketing.html" class="blog-card" style="text-decoration:none;display:block;">
-          <div class="blog-card-img">🚛</div>
+          <div class="blog-card-img" style="background:linear-gradient(135deg,#1a0a0a,#3a1010);font-size:2.5rem;">🚛</div>
           <div class="blog-card-body">
             <span class="blog-cat">Branding</span>
             <div class="blog-title">Why Your Truck Wrap Is Your Best Marketing Asset</div>
@@ -1213,7 +1445,7 @@
           </div>
         </a>
         <a href="blog-referral-engine.html" class="blog-card" style="text-decoration:none;display:block;">
-          <div class="blog-card-img">💬</div>
+          <div class="blog-card-img" style="background:linear-gradient(135deg,#0a0d1a,#0d1f3c);font-size:2.5rem;">💬</div>
           <div class="blog-card-body">
             <span class="blog-cat">Strategy</span>
             <div class="blog-title">Stop Chasing Leads. Build a Referral Engine Instead</div>
@@ -1233,10 +1465,20 @@
         <p class="contact-info-text">
           Whether you're a one-truck operation or a 20-person crew, we'll build a <strong>contractor marketing system</strong> that matches where you want to go. Book a free strategy call — no pressure, just real talk about growing your contracting business.
         </p>
+        <!-- Rudy's photo -->
+        <div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:1.8rem;">
+          <div style="width:70px;height:70px;border-radius:50%;overflow:hidden;border:2px solid var(--red);flex-shrink:0;">
+            <img src="about-us-photo.jpg" alt="Rudy — RJM Designs & Consultations" style="width:100%;height:100%;object-fit:cover;object-position:center top;"/>
+          </div>
+          <div>
+            <div style="font-family:var(--font-display);font-size:1.3rem;letter-spacing:0.05em;color:var(--white);">Rudy</div>
+            <div style="font-size:0.78rem;color:var(--muted);letter-spacing:0.05em;">Founder, RJM Designs & Consultations</div>
+          </div>
+        </div>
         <div class="contact-details">
           <div class="contact-detail">
             <div class="contact-detail-icon">📧</div>
-            <span><a href="/cdn-cgi/l/email-protection#2b595e4f526b4f4e58424c45584a454f484445585e475f5805484446" style="color:var(--white);text-decoration:none;"><span class="__cf_email__" data-cfemail="562423322f163233253f31382537383235393825233a22257835393b">[email&#160;protected]</span></a></span>
+            <span><a href="/cdn-cgi/l/email-protection#057770617c456160766c626b76646b61666a6b76706971762b666a68" style="color:var(--white);text-decoration:none;"><span class="__cf_email__" data-cfemail="c3b1b6a7ba83a7a6b0aaa4adb0a2ada7a0acadb0b6afb7b0eda0acae">[email&#160;protected]</span></a></span>
           </div>
           <div class="contact-detail">
             <div class="contact-detail-icon">📍</div>
@@ -1245,52 +1487,35 @@
         </div>
       </div>
 
-      <form class="contact-form" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">First Name</label>
-            <input class="form-input" type="text" placeholder="John" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Last Name</label>
-            <input class="form-input" type="text" placeholder="Smith" required />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email Address</label>
-          <input class="form-input" type="email" placeholder="john@yourbusiness.com" required />
-        </div>
-        <div class="form-group">
-          <label class="form-label">Your Trade / Business</label>
-          <select class="form-select">
-            <option value="">Select your trade...</option>
-            <option>Plumbing</option>
-            <option>Electrical</option>
-            <option>HVAC</option>
-            <option>Roofing</option>
-            <option>Landscaping</option>
-            <option>General Contracting</option>
-            <option>Painting</option>
-            <option>Flooring</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">What's Your Biggest Challenge?</label>
-          <textarea class="form-textarea" placeholder="Tell me about your current marketing situation and what you're trying to achieve..."></textarea>
-        </div>
-        <button type="submit" class="btn-primary" style="width:100%;text-align:center;border:none;font-size:0.9rem;">
-          Get My Free Strategy Session →
+      <div class="form-cta-block">
+        <div class="form-cta-icon">📋</div>
+        <h3 class="form-cta-title">Ready to Get Started?</h3>
+        <p class="form-cta-sub">Fill out our short contact form and Rudy will personally get back to you within 24 hours — no sales pitch, just a real conversation about your business.</p>
+        <button class="form-cta-btn" onclick="openModal()">
+          Get a Free Consultation →
         </button>
-        <p id="form-success" style="display:none;color:#4ade80;font-size:0.85rem;font-weight:600;letter-spacing:0.05em;">✓ Message sent! We'll be in touch within 24 hours.</p>
-      </form>
+        <p class="form-cta-note">Takes about 2 minutes · We respond within 24 hours</p>
+        <div class="form-cta-email">
+          Or email directly: <a href="mailto:rudy@designsandconsults.com">rudy@designsandconsults.com</a>
+        </div>
+      </div>
+        <h3 class="form-cta-title">Ready to Get Started?</h3>
+        <p class="form-cta-sub">Fill out our short contact form and Rudy will personally get back to you within 24 hours — no sales pitch, just a real conversation about your business.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScRB6b1wjeFOvQXk4qc-sVm977SSCJyb3I2jEQHIDJjf9sjPw/viewform" target="_blank" rel="noopener noreferrer" class="form-cta-btn">
+          Open Contact Form →
+        </a>
+        <p class="form-cta-note">Opens in a new tab · Takes about 2 minutes</p>
+        <div class="form-cta-email">
+          Or email directly: <a href="mailto:rudy@designsandconsults.com">rudy@designsandconsults.com</a>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ═══ FOOTER ═══ -->
   <footer style="background:var(--off-black);border-top:1px solid var(--border);padding:3rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;align-items:start;">
     <div>
-      <div class="footer-logo"><img src="RJM.png" alt="RJM Designs & Consultations - Contractor Marketing" style="height:40px;width:auto;" /></div>
+      <div class="footer-logo"><img src="RJM.png" alt="RJM Designs & Consultations - Contractor Marketing" style="height:60px;width:auto;" /></div>
       <p class="footer-copy" style="margin-top:1rem;">© 2025 RJM Designs & Consultations.<br>All rights reserved.</p>
       <p class="footer-copy" style="margin-top:0.5rem;font-size:0.7rem;line-height:1.6;">Contractor Marketing Systems · Lead Generation<br>Local SEO · Branding · Graphic Design</p>
     </div>
@@ -1312,12 +1537,13 @@
         <li><a href="#about" style="font-size:0.8rem;color:var(--muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--muted)'">About</a></li>
         <li><a href="#blog" style="font-size:0.8rem;color:var(--muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--muted)'">Blog</a></li>
         <li><a href="#contact" style="font-size:0.8rem;color:var(--muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--muted)'">Contact</a></li>
-        <li><a href="/cdn-cgi/l/email-protection#b5c7c0d1ccf5d1d0c6dcd2dbc6d4dbd1d6dadbc6c0d9c1c69bd6dad8" style="font-size:0.8rem;color:var(--muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--muted)'"><span class="__cf_email__" data-cfemail="f88a8d9c81b89c9d8b919f968b99969c9b97968b8d948c8bd69b9795">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#463433223f062223352f21283527282225292835332a32356825292b" style="color:var(--white);text-decoration:none;"><span class="__cf_email__" data-cfemail="d1a3a4b5a891b5b4a2b8b6bfa2b0bfb5b2bebfa2a4bda5a2ffb2bebc">[email&#160;protected]</span></a></li>
       </ul>
     </div>
   </footer>
 
-  <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Mobile menu
     function toggleMobile() {
       const menu = document.getElementById('mobileMenu');
       const btn = document.getElementById('hamburger');
@@ -1331,33 +1557,32 @@
       document.body.style.overflow = '';
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobile(); });
+
     // Custom cursor
     const cursor = document.getElementById('cursor');
     const ring = document.getElementById('cursorRing');
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-      setTimeout(() => {
-        ring.style.left = e.clientX + 'px';
-        ring.style.top = e.clientY + 'px';
-      }, 60);
-    });
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.style.width = '20px';
-        cursor.style.height = '20px';
-        ring.style.width = '54px';
-        ring.style.height = '54px';
-        ring.style.borderColor = 'rgba(232, 25, 44, 0.9)';
+    if (cursor && ring) {
+      document.addEventListener('mousemove', e => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        setTimeout(() => {
+          ring.style.left = e.clientX + 'px';
+          ring.style.top = e.clientY + 'px';
+        }, 60);
       });
-      el.addEventListener('mouseleave', () => {
-        cursor.style.width = '12px';
-        cursor.style.height = '12px';
-        ring.style.width = '36px';
-        ring.style.height = '36px';
-        ring.style.borderColor = 'rgba(232, 25, 44, 0.5)';
+      document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          cursor.style.width = '20px'; cursor.style.height = '20px';
+          ring.style.width = '54px'; ring.style.height = '54px';
+          ring.style.borderColor = 'rgba(232,25,44,0.9)';
+        });
+        el.addEventListener('mouseleave', () => {
+          cursor.style.width = '12px'; cursor.style.height = '12px';
+          ring.style.width = '36px'; ring.style.height = '36px';
+          ring.style.borderColor = 'rgba(232,25,44,0.5)';
+        });
       });
-    });
+    }
 
     // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
@@ -1368,7 +1593,12 @@
         }
       });
     }, { threshold: 0.1 });
-
     document.querySelectorAll('.service-card, .blog-card, .about-inner, .contact-inner').forEach(el => {
       el.style.opacity = '0';
-      el.styl
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+
+    // Active nav highlight on scroll
+    const sections = document.querySelectorAll('section[id]')
