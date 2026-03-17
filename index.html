@@ -77,19 +77,6 @@
       "https://www.linkedin.com/company/designsandconsults"
     ]
   }
-  
-    // Contact form modal
-    function openModal() {
-      document.getElementById('contactModal').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal() {
-      document.getElementById('contactModal').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeModal();
-    });
   </script>
 
   <!-- ═══ WEBSITE SCHEMA ═══ -->
@@ -1542,7 +1529,20 @@
     </div>
   </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+    // ── Contact form modal ──────────────────────────────────────
+    function openModal() {
+      document.getElementById('contactModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('contactModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script><script>
     // Mobile menu
     function toggleMobile() {
       const menu = document.getElementById('mobileMenu');
